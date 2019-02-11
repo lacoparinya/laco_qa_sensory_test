@@ -27,6 +27,10 @@ Route::get('/sensory/submitTest/{id}', 'SensoryMastersController@submitTest');
 Route::post('/sensory/submitAction/{id}', 'SensoryMastersController@submitTestAction');
 Route::get('/sensory/runtest/{id}', 'SensoryTestsController@runtest');
 Route::post('/sensory/runtestAction/{id}', 'SensoryTestsController@runtestAction');
+Route::get('/sensory/edittest/{id}', 'SensoryTestsController@edittest');
+Route::post('/sensory/edittestAction/{id}', 'SensoryTestsController@edittestAction');
+Route::get('/sensory/viewtest/{id}', 'SensoryTestsController@viewtest');
+Route::get('/sensory/sendtest/{id}', 'SensoryTestsController@sendtest');
 
 
 Auth::routes();

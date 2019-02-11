@@ -11,11 +11,17 @@ class SensoryTestM extends Model
         'test_date',
         'tester_name',
         'tester_note',
-        'note'
+        'status'
     ];
 
     public function sensoryMaster()
     {
         return $this->hasOne('App\SensoryMaster', 'id', 'sensory_master_id');
     }
+
+    public function sensoryTestD()
+    {
+        return $this->hasMany('App\SensoryTestD', 'sensory_test_ms_id');
+    }
+
 }

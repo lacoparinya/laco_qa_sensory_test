@@ -5,6 +5,7 @@ $(document).ready(function () {
         
         var chkid = $(this).attr('data-id');
         var txtResult = '#test-' + chkid + '-result';
+        var hdResult = '#test-' + chkid + '-hidden';
 
         var colorval = $("#test-" + chkid + "-color").val();
         var odorval = $("#test-" + chkid + "-odor").val();
@@ -14,8 +15,11 @@ $(document).ready(function () {
         if (colorval == 1 || colorval == 5 || odorval == 1 || odorval == 5 
             || textureval == 1 || textureval == 5 || testeval == 1 || testeval == 5) {
             $(txtResult).text('Fail');
+            $(hdResult).val('Fail');
+
         }else{
             $(txtResult).text('Pass');
+            $(hdResult).val('Pass');
         }
     });
 });

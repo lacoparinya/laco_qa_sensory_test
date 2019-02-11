@@ -6,8 +6,10 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\SensoryTestM;
+use App\SensoryTestD;
 use App\SensoryMaster;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class SensoryTestsController extends Controller
 {
@@ -122,5 +124,58 @@ class SensoryTestsController extends Controller
         $sensorymaster = SensoryMaster::findOrFail($id);
 
         return view('sensory-tests.runtest', compact('sensorymaster'));
+    }
+
+    public function runtestAction(Request $request, $id){
+        $requestData = $request->all();
+        $date = Carbon::now();
+
+        $tmpSensoryTestM = array();
+        $tmpSensoryTestM['sensory_master_id'] = $id;
+        $tmpSensoryTestM['test_date'] = $date->format('Y-m-d');
+        $tmpSensoryTestM['tester_name'] = $requestData['tester_name'];
+        $tmpSensoryTestM['tester_note'] = $requestData['tester_note'];
+
+        $sensoryTestMId = SensoryTestM::create($tmpSensoryTestM)->id;
+
+        foreach ($requestData['test'] as $key => $value) {
+            $tmpSensoryTestD = array();
+            $tmpSensoryTestD['sensory_test_ms_id'] = $sensoryTestMId;
+            $tmpSensoryTestD['sensory_detail_id'] = $key;
+            $tmpSensoryTestD['qa_sample_data_id'] = $value['qasampleid'];
+            $tmpSensoryTestD['sample_code'] = $value['txtcode'];
+            $tmpSensoryTestD['product_code'] = $value['txtprod'];
+            $tmpSensoryTestD['color'] = $value['color'];
+            $tmpSensoryTestD['odor'] = $value['odor'];
+            $tmpSensoryTestD['texture'] = $value['texture'];
+            $tmpSensoryTestD['taste'] = $value['taste'];
+            $tmpSensoryTestD['result'] = $value['hidden'];
+            $tmpSensoryTestD['status'] = 'Tested';
+
+            SensoryTestD::create($tmpSensoryTestD);
+            
+        }
+
+        return redirect('/sensory/viewtest/'. $sensoryTestMId);
+
+    }
+
+    public function edittest($id)
+    {
+        $sensoryTestM = SensoryTestM::findOrFail($id);
+
+        return view('sensory-tests.viewtest', compact('sensoryTestM'));
+    }
+
+    public function edittestAction(Request $request, $id){
+
+        return redirect('/sensory/viewtest/' . $sensoryTestMId);
+    }
+
+    public function viewtest($id)
+    {
+        $sensoryTestM = SensoryTestM::findOrFail($id);
+
+        return view('sensory-tests.viewtest', compact('sensoryTestM'));
     }
 }
