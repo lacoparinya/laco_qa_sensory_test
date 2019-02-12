@@ -10,7 +10,8 @@ class SensoryMaster extends Model
         'test_date',
         'test_time',
         'sensory_name',
-        'note'
+        'note',
+        'status'
     ];
 
     public function sensoryDetail()

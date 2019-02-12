@@ -135,6 +135,7 @@ class SensoryTestsController extends Controller
         $tmpSensoryTestM['test_date'] = $date->format('Y-m-d');
         $tmpSensoryTestM['tester_name'] = $requestData['tester_name'];
         $tmpSensoryTestM['tester_note'] = $requestData['tester_note'];
+        $tmpSensoryTestM['status'] = 'Tested';
 
         $sensoryTestMId = SensoryTestM::create($tmpSensoryTestM)->id;
 
@@ -164,12 +165,25 @@ class SensoryTestsController extends Controller
     {
         $sensoryTestM = SensoryTestM::findOrFail($id);
 
+        if($sensoryTestM->status == 'Lock'){
+            return view('sensory-tests.thankyou', compact('sensoryTestM'));
+        }
+
         return view('sensory-tests.viewtest', compact('sensoryTestM'));
     }
 
     public function edittestAction(Request $request, $id){
 
-        return redirect('/sensory/viewtest/' . $sensoryTestMId);
+        $requestData = $request->all();
+
+        $sensoryTestM = SensoryTestM::findOrFail($id);
+
+        $sensoryTestM->test_date = $requestData['test_date'];
+        $sensoryTestM->test_time = $requestData['test_time'];
+        $sensoryTestM->sensory_name = $requestData['sensory_name'];
+        $sensoryTestM->note = $requestData['note'];
+
+        return redirect('/sensory/viewtest/' . $id);
     }
 
     public function viewtest($id)
@@ -178,4 +192,25 @@ class SensoryTestsController extends Controller
 
         return view('sensory-tests.viewtest', compact('sensoryTestM'));
     }
+
+    public function sendtest($id){
+        $sensoryTestM = SensoryTestM::findOrFail($id);
+
+        foreach ($sensoryTestM->sensoryTestD as $key => $value) {
+
+            $sensoryTestD = SensoryTestD::findOrFail($value->id);
+
+            $sensoryTestD->status = 'Lock';
+
+            $sensoryTestD->save();
+
+        }
+
+        $sensoryTestM->status = 'Lock';
+
+        $sensoryTestM->save();
+
+        return view('sensory-tests.thankyou', compact('sensoryTestM'));
+
+    }   
 }

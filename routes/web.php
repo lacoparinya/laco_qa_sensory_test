@@ -11,18 +11,27 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'SensoryMastersController@index');
+
+Auth::routes();
 
 Route::resource('qa-sample-datas', 'QaSampleDatasController');
 Route::resource('sensory-masters', 'SensoryMastersController');
 Route::resource('sensory-tests', 'SensoryTestsController');
+Route::resource('groups', 'GroupsController');
+Route::resource('users', 'UsersController');
 
 Route::get('/qa/upload', 'QaSampleDatasController@upload');
 Route::post('/qa/uploadAction', 'QaSampleDatasController@uploadAction');
 Route::get('/sensory/generate', 'SensoryMastersController@generateTest');
 Route::post('/sensory/generateAction', 'SensoryMastersController@generateTestAction');
+Route::get('/sensory/editset/{id}', 'SensoryMastersController@editset');
+Route::post('/sensory/editsetAction/{id}', 'SensoryMastersController@editsetAction');
+Route::get('/sensory/startTest/{id}', 'SensoryMastersController@startTest');
+Route::get('/sensory/stopTest/{id}', 'SensoryMastersController@stopTest');
+Route::get('/sensory/printform/{id}', 'SensoryMastersController@printform');
+
+
 Route::get('/sensory/submitTest/{id}', 'SensoryMastersController@submitTest');
 Route::post('/sensory/submitAction/{id}', 'SensoryMastersController@submitTestAction');
 Route::get('/sensory/runtest/{id}', 'SensoryTestsController@runtest');
@@ -32,7 +41,10 @@ Route::post('/sensory/edittestAction/{id}', 'SensoryTestsController@edittestActi
 Route::get('/sensory/viewtest/{id}', 'SensoryTestsController@viewtest');
 Route::get('/sensory/sendtest/{id}', 'SensoryTestsController@sendtest');
 
+Route::get('qr-code', function () {
+    return QrCode::size(500)->generate('https://google.com');
+});
 
-Auth::routes();
+
 
 Route::get('/home', 'HomeController@index')->name('home');

@@ -5,10 +5,10 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">Qasampledatas</div>
+                    <div class="card-header"><h2>ข้อมูล QA Upload</h2></div>
                     <div class="card-body">
-                        <a href="{{ url('/qa-sample-datas/create') }}" class="btn btn-success btn-sm" title="Add New QaSampleData">
-                            <i class="fa fa-plus" aria-hidden="true"></i> Add New
+                        <a href="{{ url('/qa/upload') }}" class="btn btn-success btn-sm" title="Add New QaSampleData">
+                            <i class="glyphicon glyphicon-upload" aria-hidden="true"></i> Upload
                         </a>
 
                         <form method="GET" action="{{ url('/qa-sample-datas') }}" accept-charset="UTF-8" class="form-inline my-2 my-lg-0 float-right" role="search">

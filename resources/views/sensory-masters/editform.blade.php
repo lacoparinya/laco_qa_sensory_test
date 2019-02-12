@@ -37,11 +37,15 @@
                 </div>
                 
                 <div class="col-sm-5">
-                    <select name="to[]" id="search_to" class="form-control" size="8" multiple="multiple"></select>
+                    <select name="to[]" id="search_to" class="form-control" size="8" multiple="multiple">
+                        @foreach($sensorymaster->sensoryDetail as $key => $value)
+                        <option value="{{ $value->qa_sample_data_id }}">{{ $value->qaSampleData->product_code }}</option>
+                        @endforeach
+                    </select>
                 </div>
             </div>
 <div class="row">
 <div class="form-group col-md-12">
-    <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'Update' : 'Create' }}">
+    <input class="btn btn-primary" type="submit" value="Edit">
 </div>
  </div>

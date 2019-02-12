@@ -7,8 +7,6 @@
                 <div class="card">
                     <div class="card-header"><h2>สร้างแบบทดสอบ</h2></div>
                     <div class="card-body">
-                        <a href="{{ url('/sensory-masters') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="glyphicon glyphicon-arrow-left" aria-hidden="true"></i> Back</button></a>
-                        
                         @if ($errors->any())
                             <ul class="alert alert-danger">
                                 @foreach ($errors->all() as $error)
@@ -17,10 +15,10 @@
                             </ul>
                         @endif
 
-                        <form method="POST" action="{{ url('/sensory/generateAction') }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
+                        <form method="POST" action="{{ url('/sensory/editsetAction/'.$sensorymaster->id) }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
                             {{ csrf_field() }}
 
-                            @include ('sensory-masters.generateform', ['formMode' => 'create'])
+                            @include ('sensory-masters.editform', ['formMode' => 'edit'])
 
                         </form>
                     </div>

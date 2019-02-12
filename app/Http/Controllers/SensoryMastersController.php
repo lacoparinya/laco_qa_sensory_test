@@ -133,6 +133,7 @@ class SensoryMastersController extends Controller
         $tmpData['test_time'] = $requestData['test_time'];
         $tmpData['sensory_name'] = $requestData['sensory_name'];
         $tmpData['note'] = $requestData['note'];
+        $tmpData['status'] = 'create';
 
         $sensoryMasterId = SensoryMaster::create($tmpData)->id;
 
@@ -150,6 +151,58 @@ class SensoryMastersController extends Controller
             $seq++;
         }
 
+        return redirect('/sensory/submitTest/' . $sensoryMasterId);
+    }
+
+    public function editset($id){
+        $sensorymaster = SensoryMaster::findOrFail($id);
+        if($sensorymaster->status == 'Testing'){
+            return redirect('sensory-masters')->with('flash_message', ' อยู่ระหว่างการทดสอบ ไม่สามารถแก้ไขได้!');
+        }
+        $qaDataList = QaSampleData::pluck('product_code', 'id');
+        return view('sensory-masters.editset', compact('sensorymaster', 'qaDataList'));
+    }
+
+    public function editsetAction(Request $request, $id)
+    {
+        $requestData = $request->all();
+
+        $sensoryMaster = SensoryMaster::findOrFail($id);
+
+        $sensoryMaster->test_date = $requestData['test_date'];
+        $sensoryMaster->test_time = $requestData['test_time'];
+        $sensoryMaster->sensory_name = $requestData['sensory_name'];
+        $sensoryMaster->note = $requestData['note'];
+        // $sensoryTestM->status = "create";
+        foreach ($sensoryMaster->sensoryDetail as $key => $value) {
+           if(!in_array("".$value->qa_sample_data_id,$requestData['to'],TRUE)){
+                SensoryDetail::destroy($value->id);
+           }
+        }
+        $seq = 1;
+        foreach ($requestData['to'] as $value) {
+
+            $sensoryDetail = SensoryDetail::where('qa_sample_data_id', $value)->where('sensory_master_id', $id)->first();
+
+            if(empty($sensoryDetail)){
+                $tmpDetail = array();
+
+                $tmpDetail['sensory_master_id'] = $id;
+                $tmpDetail['qa_sample_data_id'] = $value;
+                $tmpDetail['seq'] = $seq;
+                $tmpDetail['status'] = 'create';
+
+                SensoryDetail::create($tmpDetail);
+                
+            }else{
+                $sensoryDetail->status = $seq;
+                $sensoryDetail->status = 'create';
+
+                $sensoryDetail->save();
+            }
+            $seq++;
+        }
+        return redirect('/sensory/submitTest/' . $id);
     }
 
     public function submitTest($id)
@@ -161,12 +214,51 @@ class SensoryMastersController extends Controller
 
     public function submitTestAction(Request $request,$id)
     {
+        $sensorymaster = SensoryMaster::findOrFail($id);
+        $sensorymaster->status = 'ready';
+        $sensorymaster->save();
+
         $requestData = $request->all();
         foreach ($requestData['detail'] as $key => $value) {
             $tmp = SensoryDetail::findOrFail($key);
             $value['status'] = 'ready';
             $tmp->update($value);
         }
+
+        return redirect('sensory-masters')->with('flash_message', ' พร้อมใช้ทดสอบ!');
+    }
+
+    public function startTest($id){
+        $sensorymaster = SensoryMaster::findOrFail($id);
+        $sensorymaster->status = 'testing';
+        $sensorymaster->save();
+
+        foreach ($sensorymaster->sensoryDetail as $key => $value) {
+            $tmpD = SensoryDetail::findOrFail($value->id);
+            $tmpD->status = 'testing';
+            $tmpD->save();
+        }
+        return redirect('sensory-masters')->with('flash_message', ' เริ่ม Testing!');
+    }
+
+    public function stopTest($id)
+    {
+        $sensorymaster = SensoryMaster::findOrFail($id);
+        $sensorymaster->status = 'stop';
+        $sensorymaster->save();
+
+        foreach ($sensorymaster->sensoryDetail as $key => $value) {
+            $tmpD = SensoryDetail::findOrFail($value->id);
+            $tmpD->status = 'stop';
+            $tmpD->save();
+        }
+        return redirect('sensory-masters')->with('flash_message', ' เริ่ม Testing!');
+    }
+
+    public function printform($id)
+    {
+        $sensorymaster = SensoryMaster::findOrFail($id);
+        return view('sensory-masters.printform', compact('sensorymaster'));
     }
 }
 
