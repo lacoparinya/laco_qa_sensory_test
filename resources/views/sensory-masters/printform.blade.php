@@ -4,7 +4,7 @@
     <div  class="row" >
         <div class="col-md-3" style="border:1px solid black; text-align:center;">
             @php
-                $url = url('/sensory/runTest/' . $sensorymaster->id);
+                $url = url('/sensory/runtest/' . $sensorymaster->id);
                 echo QrCode::size(250)->generate($url);
             @endphp
         </div>
