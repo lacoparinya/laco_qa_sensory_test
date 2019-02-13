@@ -1,7 +1,13 @@
-@extends('layouts.notlogin')
-
-@section('content')
-    <div class="container">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<div class="container">
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
@@ -55,14 +61,10 @@
                                     @endforeach
                                 </tbody>
                             </table>
-                           
-                            <div class="form-group">
-                                <a href="{{ url('/sensory/edittest/' . $sensoryTestM->id) }}" title="View SensoryTest"><button class="btn btn-success btn-m"><i class="fa fa-eye" aria-hidden="true"></i> แก้ไขผล</button></a>
-                                <a href="{{ url('/sensory/sendtest/' . $sensoryTestM->id) }}" title="View SensoryTest"><button class="btn btn-primary btn-m"><i class="fa fa-eye" aria-hidden="true"></i> ส่งผล</button></a>
-                            </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-@endsection
+</body>
+</html>

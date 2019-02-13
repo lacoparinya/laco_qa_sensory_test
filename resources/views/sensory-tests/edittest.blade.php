@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header"><h2>ตรวจสอบผล และ ยืนยัน</h2></div>
+                    <div class="card-header"><h2>แก้ไขผลการทดสอบ</h2></div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-4">วันที่ทดสอบ : {{ $sensoryTestM->sensoryMaster->test_date }}</div>

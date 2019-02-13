@@ -11,6 +11,8 @@ use App\SensoryMaster;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
+use App\Mail\QaEmail;
+use Illuminate\Support\Facades\Mail;
 class SensoryTestsController extends Controller
 {
     /**
@@ -169,19 +171,33 @@ class SensoryTestsController extends Controller
             return view('sensory-tests.thankyou', compact('sensoryTestM'));
         }
 
-        return view('sensory-tests.viewtest', compact('sensoryTestM'));
+        return view('sensory-tests.edittest', compact('sensoryTestM'));
     }
 
     public function edittestAction(Request $request, $id){
 
-        $requestData = $request->all();
-
         $sensoryTestM = SensoryTestM::findOrFail($id);
 
-        $sensoryTestM->test_date = $requestData['test_date'];
-        $sensoryTestM->test_time = $requestData['test_time'];
-        $sensoryTestM->sensory_name = $requestData['sensory_name'];
-        $sensoryTestM->note = $requestData['note'];
+        $requestData = $request->all();
+        $date = Carbon::now();
+
+        $sensoryTestM->test_date = $date->format('Y-m-d');
+        $sensoryTestM->tester_name = $requestData['tester_name'];
+        $sensoryTestM->tester_note = $requestData['tester_note'];
+
+        $sensoryTestM->save();
+
+        foreach ($requestData['test'] as $key => $value) {
+            $sensoryTestD = SensoryTestD::findOrFail($key);
+
+            $sensoryTestD->color = $value['color'];
+            $sensoryTestD->odor = $value['odor'];
+            $sensoryTestD->texture = $value['texture'];
+            $sensoryTestD->taste = $value['taste'];
+            $sensoryTestD->result = $value['hidden'];
+
+            $sensoryTestD->save();
+        }
 
         return redirect('/sensory/viewtest/' . $id);
     }
@@ -209,6 +225,13 @@ class SensoryTestsController extends Controller
         $sensoryTestM->status = 'Lock';
 
         $sensoryTestM->save();
+
+        $qaStaff = array(
+            'parinya.k@lannaagro.com'
+        );
+
+        Mail::to($qaStaff)->send(new QaEmail('ส่งผลการทดสอบ',$sensoryTestM));
+
 
         return view('sensory-tests.thankyou', compact('sensoryTestM'));
 

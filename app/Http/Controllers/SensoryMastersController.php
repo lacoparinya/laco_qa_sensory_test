@@ -11,6 +11,7 @@ use App\SensoryDetail;
 
 use Illuminate\Http\Request;
 
+
 class SensoryMastersController extends Controller
 {
     /**

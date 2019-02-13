@@ -48,6 +48,9 @@
                                             <a href="{{ url('/sensory-masters/' . $item->id) }}" title="View SensoryMaster"><button class="btn btn-info btn-sm"><i class="glyphicon glyphicon-eye" aria-hidden="true"></i> ดูสินค้า</button></a>
                                              @if ( $item->status == 'testing' )
                                             <a href="{{ url('/sensory/stopTest/' . $item->id ) }}" title="Edit SensoryMaster"><button class="btn btn-primary btn-sm"><i class="glyphicon glyphicon-pencil" aria-hidden="true"></i> Stop</button></a>
+                                            <a href="{{ url('/sensory/printform/' . $item->id ) }}" title="Edit SensoryMaster"><button class="btn btn-primary btn-sm"><i class="glyphicon glyphicon-qrcode" aria-hidden="true"></i> Print</button></a>
+                                            
+                                            
                                             @else
                                             <a href="{{ url('/sensory-masters/' . $item->id . '/edit') }}" title="Edit SensoryMaster"><button class="btn btn-primary btn-sm"><i class="glyphicon glyphicon-pencil" aria-hidden="true"></i> แก้หัวเรื่อง</button></a>
                                             <a href="{{ url('/sensory/editset/' . $item->id ) }}" title="Edit SensoryMaster"><button class="btn btn-primary btn-sm"><i class="glyphicon glyphicon-pencil" aria-hidden="true"></i> แก้สินค้า</button></a>
