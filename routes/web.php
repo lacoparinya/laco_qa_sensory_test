@@ -29,6 +29,7 @@ Route::get('/sensory/editset/{id}', 'SensoryMastersController@editset');
 Route::post('/sensory/editsetAction/{id}', 'SensoryMastersController@editsetAction');
 Route::get('/sensory/startTest/{id}', 'SensoryMastersController@startTest');
 Route::get('/sensory/stopTest/{id}', 'SensoryMastersController@stopTest');
+Route::get('/sensory/endTest/{id}', 'SensoryMastersController@endTest');
 Route::get('/sensory/printform/{id}', 'SensoryMastersController@printform');
 
 
@@ -41,10 +42,3 @@ Route::post('/sensory/edittestAction/{id}', 'SensoryTestsController@edittestActi
 Route::get('/sensory/viewtest/{id}', 'SensoryTestsController@viewtest');
 Route::get('/sensory/sendtest/{id}', 'SensoryTestsController@sendtest');
 
-Route::get('qr-code', function () {
-    return QrCode::size(500)->generate('https://google.com');
-});
-
-
-
-Route::get('/home', 'HomeController@index')->name('home');

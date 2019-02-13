@@ -25,7 +25,7 @@ class SensoryMastersController extends Controller
         $perPage = 25;
 
         if (!empty($keyword)) {
-            $sensorymasters = SensoryMaster::latest()->paginate($perPage);
+            $sensorymasters = SensoryMaster::where('sensory_name', 'like', '%' . $keyword . '%')->orWhere('test_date', 'like', '%' . $keyword . '%')->paginate($perPage);
         } else {
             $sensorymasters = SensoryMaster::latest()->paginate($perPage);
         }
@@ -255,6 +255,21 @@ class SensoryMastersController extends Controller
         }
         return redirect('sensory-masters')->with('flash_message', ' เริ่ม Testing!');
     }
+
+    public function endTest($id)
+    {
+        $sensorymaster = SensoryMaster::findOrFail($id);
+        $sensorymaster->status = 'end';
+        $sensorymaster->save();
+
+        foreach ($sensorymaster->sensoryDetail as $key => $value) {
+            $tmpD = SensoryDetail::findOrFail($value->id);
+            $tmpD->status = 'end';
+            $tmpD->save();
+        }
+        return redirect('sensory-masters')->with('flash_message', ' จบการทดสอบ!');
+    }
+
 
     public function printform($id)
     {

@@ -125,7 +125,13 @@ class SensoryTestsController extends Controller
     public function runtest($id){
         $sensorymaster = SensoryMaster::findOrFail($id);
 
-        return view('sensory-tests.runtest', compact('sensorymaster'));
+        if ($sensorymaster->status == 'testing') {
+            return view('sensory-tests.runtest', compact('sensorymaster'));
+        }else{
+            return view('sensory-tests.thankyou', compact('sensoryTestM'));
+        }
+
+        
     }
 
     public function runtestAction(Request $request, $id){
@@ -167,7 +173,7 @@ class SensoryTestsController extends Controller
     {
         $sensoryTestM = SensoryTestM::findOrFail($id);
 
-        if($sensoryTestM->status == 'Lock'){
+        if($sensoryTestM->status == 'Lock' || $sensoryTestM->status == 'end'){
             return view('sensory-tests.thankyou', compact('sensoryTestM'));
         }
 

@@ -18,4 +18,9 @@ class SensoryMaster extends Model
     {
         return $this->hasMany('App\SensoryDetail', 'sensory_master_id');
     }
+
+    public function sensoryTestM()
+    {
+        return $this->hasMany('App\SensoryTestM', 'sensory_master_id');
+    }
 }
