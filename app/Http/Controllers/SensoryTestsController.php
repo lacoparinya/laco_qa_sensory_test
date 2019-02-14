@@ -26,7 +26,9 @@ class SensoryTestsController extends Controller
         $perPage = 25;
 
         if (!empty($keyword)) {
-            $sensorytests = SensoryTestM::latest()->paginate($perPage);
+            //$sensorytests = SensoryTestM::latest()->paginate($perPage);
+            $sensorytests = SensoryTestM::where('tester_name', 'like', '%' . $keyword . '%')->orWhere('test_date', 'like', '%' . $keyword . '%')->paginate($perPage);
+    
         } else {
             $sensorytests = SensoryTestM::latest()->paginate($perPage);
         }
@@ -159,6 +161,8 @@ class SensoryTestsController extends Controller
             $tmpSensoryTestD['texture'] = $value['texture'];
             $tmpSensoryTestD['taste'] = $value['taste'];
             $tmpSensoryTestD['result'] = $value['hidden'];
+            $tmpSensoryTestD['avg_result'] = $value['avg'];
+            $tmpSensoryTestD['note'] = $value['note'];
             $tmpSensoryTestD['status'] = 'Tested';
 
             SensoryTestD::create($tmpSensoryTestD);
@@ -241,5 +245,11 @@ class SensoryTestsController extends Controller
 
         return view('sensory-tests.thankyou', compact('sensoryTestM'));
 
-    }   
+    }  
+    
+    public function listsurvey($id) {
+            $sensorymaster = SensoryMaster::findOrFail($id);
+            $sensorytests = SensoryTestM::where('sensory_master_id',$id)->get();
+            return view('sensory-tests.listsurvey', compact('sensorytests', 'sensorymaster'));
+    }
 }

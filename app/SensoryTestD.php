@@ -16,6 +16,8 @@ class SensoryTestD extends Model
         ,'odor'
         ,'texture'
         ,'taste'
+        ,'avg_result'
+        ,'note'
         ,'result'
         ,'status'
     ];

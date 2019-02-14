@@ -29,9 +29,10 @@
                              <div class="form-group col-md-4">
                                 <input class="btn btn-primary" type="submit" value="upload">
                             </div>
+                             </form>
                             <div class="col-md-4" ><a href="{{ url('/files/template.xlsx') }}" title="Back"><button class="btn btn-warning"><i class="glyphicon glyphicon-download-alt" aria-hidden="true"></i> Template Excel</button></div>
                            
-                        </form>
+                       
 
                         </div>
                        

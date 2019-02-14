@@ -7,20 +7,30 @@
                 <div class="card">
                     <div class="card-header"><h2>รายการผลการทดสอบ Sensory Test </h2></div>
                     <div class="card-body">
-                         <form method="GET" action="{{ url('/sensory-tests') }}" accept-charset="UTF-8" class="form-inline my-2 my-lg-0 float-right" role="search">
-                            <div class="form-group">
-                                <input type="text" class="form-control" name="search" placeholder="Search..." value="{{ request('search') }}">
-                                
-                                    <button class="btn btn-secondary" type="submit">
-                                        <i class="glyphicon glyphicon-search"></i>
-                                    </button>
-                              
-                            </div>
-                        </form>
-
-                        <br/>
-                        <br/>
                         <div class="table-responsive">
+                            <a href="{{ url('/sensory-masters') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="glyphicon glyphicon-arrow-left" aria-hidden="true"></i> Back</button></a>
+                        <br/>
+                        <br/>
+
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <th>ID</th><td>{{ $sensorymaster->id }}</td>
+                                        <th>วันที่ทดสอบ</th><td>{{ $sensorymaster->test_date }}</td>
+                                        <th>ครั้งที่</th><td>{{ $sensorymaster->test_time }}</td>
+                                        
+
+                                    </tr>
+                                    <tr>
+                                        <th>ชื่อ</th><td>{{ $sensorymaster->sensory_name }}</td>
+                                        <th>Note</th><td>{{ $sensorymaster->note }}</td>
+                                        <th>Status</th><td>{{ $sensorymaster->status }}</td>
+
+                                    </tr>
+                                    
+                                </tbody>
+                            </table>
+
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -49,7 +59,6 @@
                                 @endforeach
                                 </tbody>
                             </table>
-                            <div class="pagination-wrapper"> {!! $sensorytests->appends(['search' => Request::get('search')])->render() !!} </div>
                         </div>
 
                     </div>

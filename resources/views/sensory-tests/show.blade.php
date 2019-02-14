@@ -9,8 +9,7 @@
                     <div class="card-body">
 
                         <a href="{{ url('/sensory-tests') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
-                        <a href="{{ url('/sensory-tests/' . $sensorytest->id . '/edit') }}" title="Edit SensoryTest"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
-
+                        
                         <form method="POST" action="{{ url('sensorytests' . '/' . $sensorytest->id) }}" accept-charset="UTF-8" style="display:inline">
                             {{ method_field('DELETE') }}
                             {{ csrf_field() }}
@@ -25,7 +24,46 @@
                                     <tr>
                                         <th>ID</th><td>{{ $sensorytest->id }}</td>
                                     </tr>
-                                    
+                                    <tr>
+                                        <th>Sensory Test Set</th><td>{{ $sensorytest->sensoryMaster->sensory_name }} / {{ $sensorytest->sensoryMaster->test_date }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Tester</th><td>{{ $sensorytest->tester_name }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Test Date</th><td>{{ $sensorytest->test_date }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Code</th>
+                                        <th>Product</th>
+                                        <th>Color</th>
+                                        <th>Odor</th>
+                                        <th>Texture</th>
+                                        <th>Taste</th>
+                                        <th>Average</th>
+                                        <th>Result</th>
+                                        <th>Note</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($sensorytest->sensoryTestD as $item)
+                                    <tr>
+                                        <td>{{ $item->sample_code }}</td>
+                                        <td>{{ $item->product_code }}</td>
+                                        <td>{{ $item->color }}</td>
+                                        <td>{{ $item->odor }}</td>
+                                        <td>{{ $item->texture }}</td>
+                                        <td>{{ $item->taste }}</td>
+                                        <td>{{ $item->avg_result }}</td>
+                                        <td>{{ $item->result }}</td>
+                                        <td>{{ $item->note }}</td>
+                                    </tr>  
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

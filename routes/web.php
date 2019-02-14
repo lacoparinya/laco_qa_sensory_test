@@ -41,4 +41,5 @@ Route::get('/sensory/edittest/{id}', 'SensoryTestsController@edittest');
 Route::post('/sensory/edittestAction/{id}', 'SensoryTestsController@edittestAction');
 Route::get('/sensory/viewtest/{id}', 'SensoryTestsController@viewtest');
 Route::get('/sensory/sendtest/{id}', 'SensoryTestsController@sendtest');
+Route::get('/sensory/listsurvey/{id}', 'SensoryTestsController@listsurvey');
 
