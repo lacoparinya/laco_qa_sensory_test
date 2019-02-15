@@ -49,20 +49,20 @@
                                         <td>
                                             <a href="{{ url('/sensory-masters/' . $item->id) }}" title="View SensoryMaster"><button class="btn btn-info btn-sm"><i class="glyphicon glyphicon-eye-open" aria-hidden="true"></i> ดูรายการ</button></a>
                                              @if ( $item->status == 'testing' )
-                                            <a href="{{ url('/sensory/listsurvey' . $item->id) }}" title="View SensoryMaster"><button class="btn btn-info btn-sm"><i class="glyphicon glyphicon-eye-open" aria-hidden="true"></i> ดูผล</button></a>
+                                            <a href="{{ url('/sensory/listsurvey/' . $item->id) }}" title="View SensoryMaster"><button class="btn btn-primary btn-sm"><i class="glyphicon glyphicon-eye-open" aria-hidden="true"></i> ดูผล</button></a>
                                              <a href="{{ url('/sensory/runtest/' . $item->id ) }}" target="_blank" title="Edit SensoryMaster"><button class="btn btn-basic btn-sm"><i class="glyphicon glyphicon-play-circle" aria-hidden="true"></i> ทดสอบ</button></a>
-                                             <a href="{{ url('/sensory/stopTest/' . $item->id ) }}" title="Edit SensoryMaster"><button class="btn btn-warning btn-sm"><i class="glyphicon glyphicon-pause" aria-hidden="true"></i> Stop</button></a>
+                                             <a href="{{ url('/sensory/stopTest/' . $item->id ) }}" title="Edit SensoryMaster"><button class="btn btn-warning btn-sm"><i class="glyphicon glyphicon-pause" aria-hidden="true"></i> Pause</button></a>
                                             <a href="{{ url('/sensory/endTest/' . $item->id ) }}" title="Edit SensoryMaster"><button class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-stop" aria-hidden="true"></i> จบการทดสอบ</button></a>
                                             
-                                            <a href="{{ url('/sensory/printform/' . $item->id ) }}" title="Edit SensoryMaster"><button class="btn btn-success btn-sm"><i class="glyphicon glyphicon-qrcode" aria-hidden="true"></i> Print</button></a>
+                                            <a href="{{ url('/sensory/printform/' . $item->id ) }}" target="_blank" title="Edit SensoryMaster"><button class="btn btn-success btn-sm"><i class="glyphicon glyphicon-qrcode" aria-hidden="true"></i> Print</button></a>
                                             
                                             
                                             @else
 
                                                 @if ( $item->status == 'end' )
-                                                    <a href="{{ url('/sensory/listsurvey' . $item->id) }}" title="View SensoryMaster"><button class="btn btn-info btn-sm"><i class="glyphicon glyphicon-eye-open" aria-hidden="true"></i> ดูผล</button></a>
+                                                    <a href="{{ url('/sensory/listsurvey/' . $item->id) }}" title="View SensoryMaster"><button class="btn btn-primary btn-sm"><i class="glyphicon glyphicon-eye-open" aria-hidden="true"></i> ดูผล</button></a>
                                             
-                                                    <a href="{{ url('/sensory-masters/' . $item->id . '/edit') }}" title="Edit SensoryMaster"><button class="btn btn-success btn-sm"><i class="glyphicon glyphicon-stats" aria-hidden="true"></i> สรุปรายงาน</button></a>
+                                                    <a href="{{ url('/reports/summaryreport/' . $item->id ) }}" title="Edit SensoryMaster"><button class="btn btn-success btn-sm"><i class="glyphicon glyphicon-stats" aria-hidden="true"></i> สรุปรายงาน</button></a>
                                             
                                                 @else    
                                                

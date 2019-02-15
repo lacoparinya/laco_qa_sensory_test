@@ -119,16 +119,30 @@ class SensoryTestsController extends Controller
      */
     public function destroy($id)
     {
+
+        $deletedRows = SensoryTestD::where('sensory_test_ms_id', $id)->delete();
+
+        $sensoryMasterId = SensoryTestM::findOrFail($id)->sensory_master_id;
+
         SensoryTestM::destroy($id);
 
-        return redirect('sensory-tests')->with('flash_message', ' deleted!');
+        return redirect('/sensory/listsurvey/' . $sensoryMasterId);
     }
 
     public function runtest($id){
         $sensorymaster = SensoryMaster::findOrFail($id);
 
+        $optionList = array(
+            '' => 'Select',
+            '1' => '1',
+            '2' => '2',
+            '3' => '3',
+            '4' => '4',
+            '5' => '5',
+        );
+
         if ($sensorymaster->status == 'testing') {
-            return view('sensory-tests.runtest', compact('sensorymaster'));
+            return view('sensory-tests.runtest', compact('sensorymaster', 'optionList'));
         }else{
             return view('sensory-tests.thankyou', compact('sensoryTestM'));
         }

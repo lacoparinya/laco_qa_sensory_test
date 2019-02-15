@@ -45,11 +45,14 @@
                                 </ul>
                                 @else
                                 <ul class="dropdown-menu" role="menu">
-                                     <li>
-                                    <a href="{{route('sensory-masters.index')}}">Daily Report</a>
+                                    <li>
+                                    <a href="{{route('qa-sample-datas.index')}}">QA Sample Data</a>
+                                    </li>
+                                    <li>
+                                    <a href="{{route('sensory-masters.index')}}">Sensory Test</a>
                                     </li>
                                     <li><hr/></li>
-                                     <li>
+                                    <li>
                                     <a href="{{route('sensory-masters.index')}}">Daily Report</a>
                                     </li>
                                     <li>
