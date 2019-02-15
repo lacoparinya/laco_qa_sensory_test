@@ -191,11 +191,20 @@ class SensoryTestsController extends Controller
     {
         $sensoryTestM = SensoryTestM::findOrFail($id);
 
+        $optionList = array(
+            '' => 'Select',
+            '1' => '1',
+            '2' => '2',
+            '3' => '3',
+            '4' => '4',
+            '5' => '5',
+        );
+
         if($sensoryTestM->status == 'Lock' || $sensoryTestM->status == 'end'){
             return view('sensory-tests.thankyou', compact('sensoryTestM'));
         }
 
-        return view('sensory-tests.edittest', compact('sensoryTestM'));
+        return view('sensory-tests.edittest', compact('sensoryTestM', 'optionList'));
     }
 
     public function edittestAction(Request $request, $id){
@@ -219,6 +228,10 @@ class SensoryTestsController extends Controller
             $sensoryTestD->texture = $value['texture'];
             $sensoryTestD->taste = $value['taste'];
             $sensoryTestD->result = $value['hidden'];
+
+            $sensoryTestD->note = $value['note'];
+
+            $sensoryTestD->avg_result = $value['avg'];
 
             $sensoryTestD->save();
         }

@@ -40,7 +40,8 @@
                                         <th style="text-align:center" rowspan="2">ตัวอย่าง</th>
                                         <th style="text-align:center" rowspan="2">Product</th>
                                         <th style="text-align:center" colspan="4">Test Item</th>
-                                        <th style="text-align:center" rowspan="2">Result</th>
+                                        <th style="text-align:center" rowspan="2">Note</th>
+                                        <th style="text-align:center" rowspan="2">Result<br/>(Avg Point)</th>
                                     </tr>
                                     <tr>
                                         <th style="text-align:center" >Color</th>
@@ -54,25 +55,69 @@
                                     <tr>
                                         <td>{{ $item->sample_code }}</td>
                                         <td>{{ $item->product_code }}</td>
+
+
                                         <td><div class="form-group {{ $errors->has('test['.$item->id.'][color]') ? 'has-error' : ''}}">
-                                        <input min="1" max="5" data-id="{{$item->id}}" class="form-control sensory-check" name="test[{{$item->id}}][color]" type="number" id="test-{{$item->id}}-color" style="width:50px;" required value="{{ $item->color }}" >
+                                        <select data-id="{{$item->id}}" name="test[{{$item->id}}][color]" id="test-{{$item->id}}-color" required class="form-control sensory-check" style="width:100px;">>
+                                            @foreach ($optionList as $key=>$value)
+                                                <option value="{{ $key }}"
+                                                @if ($key == $item->color)
+                                                    selected
+                                                @endif
+                                                >{{ $value }}</option>
+                                            @endforeach
+                                        </select>
                                         {!! $errors->first('test['.$item->id.'][color]', '<p class="help-block">:message</p>') !!}
                                         </div></td>
                                         <td><div class="form-group {{ $errors->has('test['.$item->id.'][odor]') ? 'has-error' : ''}}">
-                                        <input data-id="{{$item->id}}" class="form-control sensory-check" name="test[{{$item->id}}][odor]" type="number" id="test-{{$item->id}}-odor" style="width:50px;" required value="{{ $item->odor }}" >
+                                    
+                                        <select data-id="{{$item->id}}" name="test[{{$item->id}}][odor]" id="test-{{$item->id}}-odor" required class="form-control sensory-check" style="width:100px;">>
+                                            @foreach ($optionList as $key=>$value)
+                                                <option value="{{ $key }}"
+                                                @if ($key == $item->odor)
+                                                    selected
+                                                @endif
+                                                >{{ $value }}</option>
+                                            @endforeach
+                                        </select>
+
                                         {!! $errors->first('test['.$item->id.'][odor]', '<p class="help-block">:message</p>') !!}
                                         </div></td>
                                         <td><div class="form-group {{ $errors->has('test['.$item->id.'][texture]') ? 'has-error' : ''}}">
-                                        <input min="1" max="5" data-id="{{$item->id}}"  class="form-control sensory-check" name="test[{{$item->id}}][texture]" type="number" id="test-{{$item->id}}-texture" style="width:50px;" required value="{{ $item->texture }}" >
-                                        {!! $errors->first('test['.$item->id.'][texture]', '<p class="help-block">:message</p>') !!}
+                                        
+                                            <select data-id="{{$item->id}}" name="test[{{$item->id}}][texture]" id="test-{{$item->id}}-texture" required class="form-control sensory-check" style="width:100px;">>
+                                            @foreach ($optionList as $key=>$value)
+                                                <option value="{{ $key }}"
+                                                @if ($key == $item->texture)
+                                                    selected
+                                                @endif
+                                                >{{ $value }}</option>
+                                            @endforeach
+                                        </select>
+
+                                            {!! $errors->first('test['.$item->id.'][texture]', '<p class="help-block">:message</p>') !!}
                                         </div></td>
                                         <td><div class="form-group {{ $errors->has('test['.$item->id.'][taste]') ? 'has-error' : ''}}">
-                                        <input min="1" max="5" data-id="{{$item->id}}"  class="form-control sensory-check" name="test[{{$item->id}}][taste]" type="number" id="test-{{$item->id}}-taste" style="width:50px;" required value="{{ $item->taste }}" >
+                                        
+                                            <select data-id="{{$item->id}}" name="test[{{$item->id}}][taste]" id="test-{{$item->id}}-taste" required class="form-control sensory-check" style="width:100px;">
+                                            @foreach ($optionList as $key=>$value)
+                                                <option value="{{ $key }}"
+                                                @if ($key == $item->taste)
+                                                    selected
+                                                @endif
+                                                >{{ $value }}</option>
+                                            @endforeach
+                                        </select>
                                         {!! $errors->first('test['.$item->id.'][taste]', '<p class="help-block">:message</p>') !!}
                                         </div></td>
+                                        <td><div class="form-group {{ $errors->has('test['.$item->id.'][note]') ? 'has-error' : ''}}">
+                                        <input data-id="{{$item->id}}"  class="form-control sensory-check" name="test[{{$item->id}}][note]" type="text" id="test-{{$item->id}}-note" value="{{ $item->note or '' }}">
+                                        {!! $errors->first('test['.$item->id.'][note]', '<p class="help-block">:message</p>') !!}
+                                        </div></td>
                                         <td>
-                                        <div id="test-{{$item->id}}-result" >{{ $item->result }}</div>
+                                            <div id="test-{{$item->id}}-result" > ({{ $item->avg_result }}) {{ $item->result }}</div>
                                             <input type="hidden" name="test[{{$item->id}}][hidden]" id="test-{{$item->id}}-hidden" value="{{ $item->result }}" />
+                                            <input type="hidden" name="test[{{$item->id}}][avg]" id="test-{{$item->id}}-avg" value="{{ $item->avg_result }}" />
                                         </td>
                                     </tr>
                                     @endforeach

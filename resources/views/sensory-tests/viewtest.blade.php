@@ -32,7 +32,8 @@
                                         <th style="text-align:center" rowspan="2">ตัวอย่าง</th>
                                         <th style="text-align:center" rowspan="2">Product</th>
                                         <th style="text-align:center" colspan="4">Test Item</th>
-                                        <th style="text-align:center" rowspan="2">Result</th>
+                                        <th style="text-align:center" rowspan="2">Note</th>
+                                        <th style="text-align:center" rowspan="2">Result<br/>(Avg Point)</th>
                                     </tr>
                                     <tr>
                                         <th style="text-align:center" >Color</th>
@@ -50,7 +51,8 @@
                                         <td>{{ $item->odor }}</td>
                                         <td>{{ $item->texture }}</td>
                                         <td>{{ $item->taste }}</td>
-                                        <td><div id="test-{{$item->id}}-result" >{{ $item->result }}</div></td>
+                                        <td>{{ $item->note }}</td>
+                                        <td><div id="test-{{$item->id}}-result" > ({{ $item->avg_result }}) {{ $item->result }}</div></td>
                                     </tr>
                                     @endforeach
                                 </tbody>
