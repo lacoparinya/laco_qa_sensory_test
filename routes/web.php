@@ -20,7 +20,10 @@ Route::resource('sensory-masters', 'SensoryMastersController');
 Route::resource('sensory-tests', 'SensoryTestsController');
 Route::resource('groups', 'GroupsController');
 Route::resource('users', 'UsersController');
+Route::resource('qa-samplings', 'QaSamplingsController');
 
+Route::get('/qasample/upload', 'QaSamplingsController@upload');
+Route::post('/qasample/uploadAction', 'QaSamplingsController@uploadAction');
 Route::get('/qa/upload', 'QaSampleDatasController@upload');
 Route::post('/qa/uploadAction', 'QaSampleDatasController@uploadAction');
 Route::get('/sensory/generate', 'SensoryMastersController@generateTest');
@@ -44,4 +47,5 @@ Route::get('/sensory/sendtest/{id}', 'SensoryTestsController@sendtest');
 Route::get('/sensory/listsurvey/{id}', 'SensoryTestsController@listsurvey');
 
 Route::get('/reports/summaryreport/{id}', 'ReportsController@summaryreport');
+Route::get('/reports/xlssummaryreport/{id}', 'ReportsController@xlsreport');
 

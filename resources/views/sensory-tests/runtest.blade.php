@@ -54,7 +54,7 @@
                                     @foreach ( $sensorymaster->sensoryDetail as $item)
                                     <tr>
                                         <td>{{ $item->code }}</td>
-                                        <td>{{ $item->qaSampleData->product_group }}</td>
+                                        <td>{{ $item->qaSampleData->product_name }}</td>
                                         <td><div class="form-group {{ $errors->has('test['.$item->id.'][color]') ? 'has-error' : ''}}">
                                         <select data-id="{{$item->id}}" name="test[{{$item->id}}][color]" id="test-{{$item->id}}-color" required class="form-control sensory-check" style="width:100px;">>
                                             @foreach ($optionList as $key=>$value)
@@ -103,7 +103,7 @@
                                             
                                             <input type="hidden" name="test[{{$item->id}}][qasampleid]" id="test-{{$item->id}}-qasampleid" value="{{ $item->qaSampleData->id }}" />
                                             <input type="hidden" name="test[{{$item->id}}][txtcode]" id="test-{{$item->id}}-txtcode" value="{{ $item->code }}" />
-                                            <input type="hidden" name="test[{{$item->id}}][txtprod]" id="test-{{$item->id}}-txtprod" value="{{ $item->qaSampleData->product_group }}" />
+                                            <input type="hidden" name="test[{{$item->id}}][txtprod]" id="test-{{$item->id}}-txtprod" value="{{ $item->qaSampleData->product_name }}" />
                                         </td>
                                     </tr>
                                     @endforeach

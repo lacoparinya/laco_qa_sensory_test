@@ -63,7 +63,8 @@
                                                     <a href="{{ url('/sensory/listsurvey/' . $item->id) }}" title="View SensoryMaster"><button class="btn btn-primary btn-sm"><i class="glyphicon glyphicon-eye-open" aria-hidden="true"></i> ดูผล</button></a>
                                             
                                                     <a href="{{ url('/reports/summaryreport/' . $item->id ) }}" title="Edit SensoryMaster"><button class="btn btn-success btn-sm"><i class="glyphicon glyphicon-stats" aria-hidden="true"></i> สรุปรายงาน</button></a>
-                                            
+                                                    <a href="{{ url('/reports/xlssummaryreport/' . $item->id ) }}" title="Edit SensoryMaster"><button class="btn btn-success btn-sm"><i class="glyphicon glyphicon-calendar" aria-hidden="true"></i> Excel</button></a>
+                                        
                                                 @else    
                                                
                                             <a href="{{ url('/sensory-masters/' . $item->id . '/edit') }}" title="Edit SensoryMaster"><button class="btn btn-primary btn-sm"><i class="glyphicon glyphicon-pencil" aria-hidden="true"></i> แก้หัวเรื่อง</button></a>

@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\SensoryMaster;
 use App\QaSampleData;
 use App\SensoryDetail;
+use App\QaSampleSensory;
 
 use Illuminate\Http\Request;
 
@@ -126,7 +127,7 @@ class SensoryMastersController extends Controller
     }
 
     public function generateTest(){
-        $qaDataList = QaSampleData::pluck('product_code', 'id');
+        $qaDataList = QaSampleSensory::pluck('run_number', 'id');
         return view('sensory-masters.generate', compact('qaDataList'));
     }
 

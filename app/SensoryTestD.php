@@ -34,6 +34,6 @@ class SensoryTestD extends Model
 
     public function qaSampleData()
     {
-        return $this->hasOne('App\QaSampleData', 'id', 'qa_sample_data_id');
+        return $this->hasOne('App\QaSampleSensory', 'id', 'qa_sample_data_id');
     }
 }

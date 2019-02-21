@@ -34,7 +34,7 @@
                             @foreach ( $sensorymaster->sensoryDetail as $item)
                                 <div class="row">
                                     <div class="col-md-3">
-                                        {{ $item->qaSampleData->product_code }} | {{ $item->qaSampleData->storedate_shift }} | {{ $item->qaSampleData->seq_sample_code }} 
+                                        {{ $item->qaSampleData->run_number }} | {{ $item->qaSampleData->product_name }} | {{ $item->qaSampleData->sampling_no }} 
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group {{ $errors->has('detail['.$item->id.'][code]') ? 'has-error' : ''}}">

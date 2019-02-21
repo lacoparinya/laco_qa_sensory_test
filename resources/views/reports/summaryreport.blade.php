@@ -36,7 +36,7 @@ google.charts.setOnLoadCallback(drawVisualization);
         var data = google.visualization.arrayToDataTable([
           ['Product', 'Color', 'Odor', 'Texture', 'Taste','Limit Top','Limit Below'],
           @foreach($summaryData as $item)
-            ['{{ $item->code }} - {{ $item->product_group }}',{{ $item->avg_color }},{{ $item->avg_odor }},{{ $item->avg_texture }},{{ $item->avg_taste }},5,1],
+            ['{{ $item->code }} - {{ $item->product_name }}',{{ $item->avg_color }},{{ $item->avg_odor }},{{ $item->avg_texture }},{{ $item->avg_taste }},5,1],
           @endforeach
         ]);
 
@@ -45,13 +45,14 @@ google.charts.setOnLoadCallback(drawVisualization);
                     top: 45,
                     height: '50%' 
                 },
-                title : 'สรุปผลการคัดวันที่',
+                title : 'วันที่ทดสอบ: {{ $masterData->test_date }} ,การทดสอบชื่อ: {{ $masterData->sensory_name }}',
                 legend: { 
                     position: 'top', 
                     maxLines: 3 
                 },
                 vAxis: {
-                    title: 'ปริมาณDefect (%)'
+                    title: 'คะแนนการทดสอบเฉลี่ย (1-5)',
+                    ticks: [0,1,2,3,4,5,6] 
                 },
                 seriesType: 'bars',
                 series: {

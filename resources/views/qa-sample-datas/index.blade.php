@@ -44,8 +44,7 @@
                                         <td>{{ $item->seq_sample_code }}</td>
                                         <td>
                                             <a href="{{ url('/qa-sample-datas/' . $item->id) }}" title="View QaSampleData"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
-                                            <a href="{{ url('/qa-sample-datas/' . $item->id . '/edit') }}" title="Edit QaSampleData"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
-
+                                           
                                             <form method="POST" action="{{ url('/qa-sample-datas' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
                                                 {{ method_field('DELETE') }}
                                                 {{ csrf_field() }}

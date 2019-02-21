@@ -19,7 +19,7 @@
                                 @if ( App\User::find(Auth::user()->id)->group->role == 'admin'  )
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
-                                    <a href="{{route('qa-sample-datas.index')}}">QA Sample Data</a>
+                                    <a href="{{route('qa-samplings.index')}}">QA Sample Data</a>
                                     </li>
                                     <li>
                                     <a href="{{route('sensory-masters.index')}}">Sensory Test</a>
@@ -46,7 +46,7 @@
                                 @else
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
-                                    <a href="{{route('qa-sample-datas.index')}}">QA Sample Data</a>
+                                    <a href="{{route('qa-samplings.index')}}">QA Sample Data</a>
                                     </li>
                                     <li>
                                     <a href="{{route('sensory-masters.index')}}">Sensory Test</a>
