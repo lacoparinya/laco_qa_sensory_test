@@ -137,7 +137,7 @@ class QaSamplingsController extends Controller
 
         $storagePath = Storage::disk('local')->getDriver()->getAdapter()->getPathPrefix();
 
-        Excel::selectSheets('Sheet1')->load($storagePath . $path, function ($reader) {
+        Excel::selectSheets( 'Sensory Test')->load($storagePath . $path, function ($reader) {
 
             $mapping = array(
                 'Run Number' => 'run_number',
