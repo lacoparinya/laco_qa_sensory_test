@@ -41,10 +41,10 @@
                             @foreach ( $sensorymaster->sensoryDetail as $item)
                                 <div class="row">
                                     <div class="col-md-3">
-                                        {{ $item->qaSampleData->product_code }} | {{ $item->qaSampleData->storedate_shift }} | {{ $item->qaSampleData->seq_sample_code }} 
+                                        {{ $item->qaSampleData->run_number }} | {{ $item->qaSampleData->sampling_no }} 
                                     </div>
                                     <div class="col-md-2">{{ $item->code or ''}}</div>
-                                    <div class="col-md-3">{{ $item->qaSampleData->product_group or ''}}</div>
+                                    <div class="col-md-3">{{ $item->qaSampleData->product_name or ''}}</div>
                                     
                                     <div class="col-md-1">{{ $item->time or '1'}}
                                     </div>

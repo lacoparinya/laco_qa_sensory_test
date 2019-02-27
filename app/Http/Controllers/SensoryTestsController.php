@@ -144,8 +144,8 @@ class SensoryTestsController extends Controller
         if ($sensorymaster->status == 'testing') {
             return view('sensory-tests.runtest', compact('sensorymaster', 'optionList'));
         }else{
-           // return view('sensory-tests.thankyou', compact('sensoryTestM'));
-            return view('sensory-tests.runtest', compact('sensorymaster', 'optionList'));
+            return view('sensory-tests.thankyou', compact('sensoryTestM'));
+            //return view('sensory-tests.runtest', compact('sensorymaster', 'optionList'));
         }
 
         

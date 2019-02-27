@@ -215,7 +215,22 @@ class SensoryMastersController extends Controller
     {
         $sensorymaster = SensoryMaster::findOrFail($id);
 
-        return view('sensory-masters.submit', compact('sensorymaster'));
+        $gcode = array();
+        foreach ( $sensorymaster->sensoryDetail as $obj) {
+            $rnumber = $obj->qaSampleData->run_number;
+            if(empty($rnumber)){
+                $gcode[ $obj->id] = '';
+            }else{
+                $rexpl = explode("-",$rnumber);
+                if(isset($rexpl[1])){
+                    $gcode[ $obj->id] = $rexpl[0][0].$rexpl[1];
+                }else{
+                    $gcode[ $obj->id] = '';
+                }
+            }
+        }
+
+        return view('sensory-masters.submit', compact('sensorymaster', 'gcode'));
     }
 
     public function submitTestAction(Request $request,$id)

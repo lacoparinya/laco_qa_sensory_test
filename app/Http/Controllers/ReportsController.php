@@ -183,9 +183,9 @@ class ReportsController extends Controller
             $percent = ($detailSummary[$value->code]['taste']['fail']/ $detailSummary[$value->code]['count'])*100;
 
             if($percent < 20){
-                $detailSummary[$value->code]['result'] = 'Fail';
-            }else{
                 $detailSummary[$value->code]['result'] = 'Pass';
+            }else{
+                $detailSummary[$value->code]['result'] = 'Fail';
             }
             
         }

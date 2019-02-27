@@ -8,7 +8,7 @@
                     <div class="card-header">SensoryTest {{ $sensorytest->id }}</div>
                     <div class="card-body">
 
-                        <a href="{{ url('/sensory-tests') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
+                        <a href="{{ url('/sensory/listsurvey/'. $sensorytest->sensory_master_id) }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
                         
                         <form method="POST" action="{{ url('sensorytests' . '/' . $sensorytest->id) }}" accept-charset="UTF-8" style="display:inline">
                             {{ method_field('DELETE') }}

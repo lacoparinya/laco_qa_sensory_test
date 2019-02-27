@@ -38,8 +38,8 @@
                 
                 <div class="col-sm-5">
                     <select name="to[]" id="search_to" class="form-control" size="8" multiple="multiple">
-                        @foreach($sensorymaster->sensoryDetail as $key => $value)
-                        <option value="{{ $value->qa_sample_data_id }}">{{ $value->qaSampleData->product_code }}</option>
+                        @foreach($sensorymaster->sensoryDetail as $key => $mvalue)
+                        <option value="{{ $mvalue->qa_sample_data_id }}">{{ $mvalue->qaSampleData->run_number or '' }}</option>
                         @endforeach
                     </select>
                 </div>

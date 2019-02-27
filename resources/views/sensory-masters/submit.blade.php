@@ -38,7 +38,8 @@
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group {{ $errors->has('detail['.$item->id.'][code]') ? 'has-error' : ''}}">
-                                        <input class="form-control" name="detail[{{$item->id}}][code]" type="text" id="detail[{{$item->id}}][code]" required value="{{ $item->code or ''}}" >
+                                        <input class="form-control" name="detail[{{$item->id}}][code]" type="text" id="detail[{{$item->id}}][code]" 
+                                        required value="{{ $item->code or $gcode[$item->id] }}" >
                                         {!! $errors->first('detail['.$item->id.'][code]', '<p class="help-block">:message</p>') !!}
                                         </div>
                                     </div>
