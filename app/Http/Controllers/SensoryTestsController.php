@@ -264,9 +264,7 @@ class SensoryTestsController extends Controller
 
         $sensoryTestM->save();
 
-        $qaStaff = array(
-            'parinya.k@lannaagro.com'
-        );
+        $qaStaff = config('myconfig.emaillist');
 
         Mail::to($qaStaff)->send(new QaEmail('ส่งผลการทดสอบ',$sensoryTestM));
 

@@ -38,6 +38,7 @@
                                         <th style="text-align:center" rowspan="2">ตัวอย่าง</th>
                                         <th style="text-align:center" rowspan="2">Product</th>
                                         <th style="text-align:center" colspan="4">Test Item</th>
+                                        <th style="text-align:center" rowspan="2">Note</th>
                                         <th style="text-align:center" rowspan="2">Result</th>
                                     </tr>
                                     <tr>
@@ -56,6 +57,7 @@
                                         <td>{{ $item->odor }}</td>
                                         <td>{{ $item->texture }}</td>
                                         <td>{{ $item->taste }}</td>
+                                        <td><div id="test-{{$item->id}}-result" >{{ $item->note }}</div></td>
                                         <td><div id="test-{{$item->id}}-result" >{{ $item->result }}</div></td>
                                     </tr>
                                     @endforeach
