@@ -13,6 +13,7 @@ use Carbon\Carbon;
 
 use App\Mail\QaEmail;
 use Illuminate\Support\Facades\Mail;
+use Jenssegers\Agent\Agent;
 class SensoryTestsController extends Controller
 {
     /**
@@ -131,9 +132,8 @@ class SensoryTestsController extends Controller
 
     public function runtest($id){
         $sensorymaster = SensoryMaster::findOrFail($id);
-
+        $agent = new Agent();
         $optionList = array(
-            '' => 'Select',
             '1' => '1',
             '2' => '2',
             '3' => '3',
@@ -142,7 +142,7 @@ class SensoryTestsController extends Controller
         );
 
         if ($sensorymaster->status == 'testing') {
-            return view('sensory-tests.runtest', compact('sensorymaster', 'optionList'));
+            return view('sensory-tests.runtest', compact('sensorymaster', 'optionList', 'agent'));
         }else{
             return view('sensory-tests.thankyou', compact('sensoryTestM'));
             //return view('sensory-tests.runtest', compact('sensorymaster', 'optionList'));

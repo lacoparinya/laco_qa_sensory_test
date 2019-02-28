@@ -181,8 +181,9 @@ return [
 
         Maatwebsite\Excel\ExcelServiceProvider::class,
 
-        SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class
+        SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
 
+        Jenssegers\Agent\AgentServiceProvider::class
     ],
 
     /*
@@ -238,6 +239,8 @@ return [
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
 
         'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
+
+        'Agent' => Jenssegers\Agent\Facades\Agent::class,
 
     ],
 
