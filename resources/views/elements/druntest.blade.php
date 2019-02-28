@@ -32,25 +32,12 @@
                                 {!! $errors->first('tester_note', '<p class="help-block">:message</p>') !!}
                             </div>
 
-                            <table class="table" >
-                                <thead>
-                                    <tr>
-                                        <th style="text-align:center" >ตัวอย่าง</th>
-                                        <th style="text-align:center" >Product</th>
-                                        <th style="text-align:center" >Color</th>
-                                        <th style="text-align:center" >Odor</th>
-                                        <th style="text-align:center" >Texture</th>
-                                        <th style="text-align:center" >Taste</th>
-                                        <th style="text-align:center" >Note</th>
-                                        <th style="text-align:center" >Result<br/>(Avg Point)</th>
-                                    </tr>
-                                </thead>
+                            <table class="table">
                                 <tbody>
                                     @foreach ( $sensorymaster->sensoryDetail as $item)
                                     <tr>
-                                        <td>{{ $item->code }}</td>
-                                        <td>{{ $item->qaSampleData->product_name }}</td>
-                                        <td><div class="{{ $errors->has('test['.$item->id.'][color]') ? 'has-error' : ''}}">
+                                        <td>ตัวอย่าง : {{ $item->code }}<br/>Product : {{ $item->qaSampleData->product_name }}</td>
+                                        <td>Color<div class="{{ $errors->has('test['.$item->id.'][color]') ? 'has-error' : ''}}">
                                         <select data-id="{{$item->id}}" name="test[{{$item->id}}][color]" id="test-{{$item->id}}-color" required class="form-control sensory-check" style="width:55px;">>
                                             @foreach ($optionList as $key=>$value)
                                                 <option value="{{ $key }}"
@@ -62,7 +49,7 @@
                                         </select>
                                         {!! $errors->first('test['.$item->id.'][color]', '<p class="help-block">:message</p>') !!}
                                         </div></td>
-                                        <td><div class=" form-group  {{ $errors->has('test['.$item->id.'][odor]') ? 'has-error' : ''}}">
+                                        <td>Odor<div class=" form-group  {{ $errors->has('test['.$item->id.'][odor]') ? 'has-error' : ''}}">
                                     
                                         <select data-id="{{$item->id}}" name="test[{{$item->id}}][odor]" id="test-{{$item->id}}-odor" required class="form-control sensory-check" style="width:55px;">
                                             @foreach ($optionList as $key=>$value)
@@ -76,7 +63,7 @@
 
                                         {!! $errors->first('test['.$item->id.'][odor]', '<p class="help-block">:message</p>') !!}
                                         </div></td>
-                                        <td><div class="form-group {{ $errors->has('test['.$item->id.'][texture]') ? 'has-error' : ''}}">
+                                        <td>Texture<div class="form-group {{ $errors->has('test['.$item->id.'][texture]') ? 'has-error' : ''}}">
                                         
                                             <select data-id="{{$item->id}}" name="test[{{$item->id}}][texture]" id="test-{{$item->id}}-texture" required class="form-control sensory-check" style="width:55px;">>
                                             @foreach ($optionList as $key=>$value)
@@ -90,7 +77,7 @@
 
                                             {!! $errors->first('test['.$item->id.'][texture]', '<p class="help-block">:message</p>') !!}
                                         </div></td>
-                                        <td><div class="form-group {{ $errors->has('test['.$item->id.'][taste]') ? 'has-error' : ''}}">
+                                        <td>Taste<div class="form-group {{ $errors->has('test['.$item->id.'][taste]') ? 'has-error' : ''}}">
                                         
                                             <select data-id="{{$item->id}}" name="test[{{$item->id}}][taste]" id="test-{{$item->id}}-taste" required class="form-control sensory-check" style="width:55px;">
                                             @foreach ($optionList as $key=>$value)
@@ -104,11 +91,11 @@
                                         {!! $errors->first('test['.$item->id.'][taste]', '<p class="help-block">:message</p>') !!}
                                         </div></td>
                                         
-                                        <td><div class="form-group {{ $errors->has('test['.$item->id.'][note]') ? 'has-error' : ''}}">
+                                        <td>Note<div class="form-group {{ $errors->has('test['.$item->id.'][note]') ? 'has-error' : ''}}">
                                         <input data-id="{{$item->id}}"  class="form-control sensory-check" name="test[{{$item->id}}][note]" type="text" id="test-{{$item->id}}-note" style="width:150px;" >
                                         {!! $errors->first('test['.$item->id.'][note]', '<p class="help-block">:message</p>') !!}
                                         </div></td>
-                                        <td>
+                                        <td>Result (Avg Point)
                                             <div id="test-{{$item->id}}-result" ></div>
                                             <input type="hidden" name="test[{{$item->id}}][hidden]" id="test-{{$item->id}}-hidden" />
                                             <input type="hidden" name="test[{{$item->id}}][avg]" id="test-{{$item->id}}-avg" />
