@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -54,7 +55,7 @@ $(document).ready(function() {
             right: '<input type="text" name="q" class="form-control" placeholder="Search..." />',
         },
         fireSearch: function(value) {
-            return value.length > 3;
+            return value.length > 2;
         }
     });
 });

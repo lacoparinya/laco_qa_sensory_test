@@ -8,7 +8,7 @@
                     <div class="card-header">รายการ QA Sample Data</div>
                     <div class="card-body">
                         <a href="{{ url('/qasample/upload') }}" class="btn btn-success btn-sm" title="Add New QaSampling">
-                            <i class="glyphicon glyphicon-plus" aria-hidden="true"></i> Add New
+                            <i class="glyphicon glyphicon-plus" aria-hidden="true"></i> Upload Data
                         </a>
 
                         <form method="GET" action="{{ url('/qa-samplings') }}" accept-charset="UTF-8" class="form-inline my-2 my-lg-0 float-right" role="search">
