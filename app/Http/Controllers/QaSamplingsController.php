@@ -170,9 +170,9 @@ class QaSamplingsController extends Controller
                             } elseif (strpos($value, "<") !== false) {
                                 $saveTmp[$mapKey] = -1 * $value;
                             } else {
-                                if($mapKey == 'sampling_date'){
-                                    $value = Carbon::parse($value);
-                                }
+                               // if($mapKey == 'sampling_date'){
+                             //       $value = Carbon::parse($value);
+                              //  }
                                 $saveTmp[$mapKey] = $value;
                             }
 
