@@ -41,7 +41,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('/js/app.js') }}"></script>
-    <script src="{{ asset('/js/sensory.js?ver=2') }}"></script>
+    <script src="{{ asset('/js/sensory.js?ver=3') }}"></script>
     <script src="{{ asset('/dist/js/multiselect.js') }}"></script>
 
 </body>

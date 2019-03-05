@@ -54,8 +54,9 @@ $(document).ready(function () {
             
         });
         if (notchk == 0){
-            console.log("REmove");
             $('#btnsave').removeAttr("disabled");
+        }else{
+            $('#btnsave').attr("disabled", "disabled");
         }
     });
 
