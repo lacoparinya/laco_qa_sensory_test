@@ -36,7 +36,7 @@
                                 <tbody>
                                     @foreach ( $sensorymaster->sensoryDetail as $item)
                                     <tr>
-                                        <td>ตัวอย่าง : {{ $item->code }}<br/>Product : {{ $item->qaSampleData->product_name }}</td>
+                                        <td>{{ Form::checkbox('chktested', $item->id, false,array('class' => 'chkall')) }} ตัวอย่าง : {{ $item->code }}<br/>Product : {{ $item->qaSampleData->product_name }}</td>
                                         <td>Color<div class="{{ $errors->has('test['.$item->id.'][color]') ? 'has-error' : ''}}">
                                         <select data-id="{{$item->id}}" name="test[{{$item->id}}][color]" id="test-{{$item->id}}-color" required class="form-control sensory-check" style="width:55px;">>
                                             @foreach ($optionList as $key=>$value)
@@ -97,8 +97,8 @@
                                         </div></td>
                                         <td>Result (Avg Point)
                                             <div id="test-{{$item->id}}-result" ></div>
-                                            <input type="hidden" name="test[{{$item->id}}][hidden]" id="test-{{$item->id}}-hidden" />
-                                            <input type="hidden" name="test[{{$item->id}}][avg]" id="test-{{$item->id}}-avg" />
+                                            <input type="hidden" name="test[{{$item->id}}][hidden]" id="test-{{$item->id}}-hidden" value="Pass"/>
+                                            <input type="hidden" name="test[{{$item->id}}][avg]" id="test-{{$item->id}}-avg" value="3" />
                                             
                                             <input type="hidden" name="test[{{$item->id}}][qasampleid]" id="test-{{$item->id}}-qasampleid" value="{{ $item->qaSampleData->id }}" />
                                             <input type="hidden" name="test[{{$item->id}}][txtcode]" id="test-{{$item->id}}-txtcode" value="{{ $item->code }}" />
@@ -110,7 +110,7 @@
                             </table>
                            
                             <div class="form-group">
-                                <input class="btn btn-primary" type="submit" value="ส่งผลทดสอบ">
+                                <input name='btnsave' id='btnsave' class="btn btn-primary" type="submit" value="ส่งผลทดสอบ" disabled>
                             </div>
 
                         </form>

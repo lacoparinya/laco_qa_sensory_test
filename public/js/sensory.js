@@ -39,4 +39,24 @@ $(document).ready(function () {
             $(hdResult).val('Pass');
         }
     });
+
+
+    $(".chkall").change(function () {
+        var chk = 0;
+        var notchk = 0;
+        $(".chkall").each(function() {
+            
+            if ($(this).prop('checked') == true) {
+                chk++;
+            }else{
+                notchk++;
+            }
+            
+        });
+        if (notchk == 0){
+            console.log("REmove");
+            $('#btnsave').removeAttr("disabled");
+        }
+    });
+
 });
