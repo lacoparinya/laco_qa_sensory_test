@@ -49,3 +49,18 @@ Route::get('/sensory/listsurvey/{id}', 'SensoryTestsController@listsurvey');
 Route::get('/reports/summaryreport/{id}', 'ReportsController@summaryreport');
 Route::get('/reports/xlssummaryreport/{id}', 'ReportsController@xlsreport');
 
+Route::get('storage/capture/{id}/{filename}', function ($id,$filename) {
+    $path = storage_path( 'app/capture/' . $id .'/'. $filename);
+
+    if (!File::exists($path)) {
+        abort(404);
+    }
+
+    $file = File::get($path);
+    $type = File::mimeType($path);
+
+    $response = Response::make($file, 200);
+    $response->header("Content-Type", $type);
+
+    return $response;
+});

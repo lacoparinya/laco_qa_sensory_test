@@ -14,6 +14,8 @@ use Carbon\Carbon;
 use App\Mail\QaEmail;
 use Illuminate\Support\Facades\Mail;
 use Jenssegers\Agent\Agent;
+use Illuminate\Support\Facades\Storage;
+
 class SensoryTestsController extends Controller
 {
     /**
@@ -179,6 +181,10 @@ class SensoryTestsController extends Controller
             $tmpSensoryTestD['avg_result'] = $value['avg'];
             $tmpSensoryTestD['note'] = $value['note'];
             $tmpSensoryTestD['status'] = 'Tested';
+
+            if(!empty($value['capture'])){
+                $tmpSensoryTestD[ 'image_path'] = Storage::putFile( 'capture/'. $id, $value['capture']);
+            }
 
             SensoryTestD::create($tmpSensoryTestD);
             

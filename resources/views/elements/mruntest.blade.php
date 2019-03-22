@@ -97,6 +97,8 @@
                                         <td colspan="2"><div class="form-group {{ $errors->has('test['.$item->id.'][note]') ? 'has-error' : ''}}">
                                         <input data-id="{{$item->id}}"  class="form-control sensory-check" name="test[{{$item->id}}][note]" type="text" id="test-{{$item->id}}-note" style="width:150px;" >
                                         {!! $errors->first('test['.$item->id.'][note]', '<p class="help-block">:message</p>') !!}
+                                        Image
+                                        <input data-id="{{$item->id}}"  type="file" accept="image/*" name="test[{{$item->id}}][capture]" id="test-{{$item->id}}-capture" capture="camera"> 
                                         </div></td>
                                         <td>Result</td>
                                         <td>

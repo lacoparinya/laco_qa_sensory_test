@@ -61,7 +61,11 @@
                                         <td>{{ $item->taste }}</td>
                                         <td>{{ $item->avg_result }}</td>
                                         <td>{{ $item->result }}</td>
-                                        <td>{{ $item->note }}</td>
+                                        <td>{{ $item->note }}
+                                        @if (!empty($item->image_path))
+                                            <img src="{{  env('APP_URL').Illuminate\Support\Facades\Storage::url($item->image_path) }}" hight="100px">
+                                        @endif
+                                        </td>
                                     </tr>  
                                     @endforeach
                                 </tbody>

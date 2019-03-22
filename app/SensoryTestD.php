@@ -18,6 +18,7 @@ class SensoryTestD extends Model
         ,'taste'
         ,'avg_result'
         ,'note'
+        ,'image_path'
         ,'result'
         ,'status'
     ];
