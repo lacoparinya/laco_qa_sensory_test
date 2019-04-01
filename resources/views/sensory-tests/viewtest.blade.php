@@ -53,7 +53,7 @@
                                         <td>{{ $item->taste }}</td>
                                         <td>{{ $item->note }}
                                         @if (!empty($item->image_path))
-                                            <img src="{{  env('APP_URL').Illuminate\Support\Facades\Storage::url($item->image_path) }}" hight="100px">
+                                            <img src="{{  env('APP_URL').Illuminate\Support\Facades\Storage::url($item->image_path) }}" height="100px">
                                         @endif
                                         </td>
                                         <td><div id="test-{{$item->id}}-result" > ({{ $item->avg_result }}) {{ $item->result }}</div></td>

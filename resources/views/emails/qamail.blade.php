@@ -17,7 +17,9 @@
                             <div class="col-md-4"><label class="control-label">วันที่ทดสอบ</label> : {{ $sensoryTestM->sensoryMaster->test_date }}</div>
                             <div class="col-md-4"><label class="control-label">ครั้งที่</label> : {{ $sensoryTestM->sensoryMaster->test_time }}</div>
                             <div class="col-md-4"><label class="control-label">ชื่อ</label> : {{ $sensoryTestM->sensoryMaster->sensory_name }}</div>
-                            <div class="col-md-12"><label class="control-label">Note</label> : {{ $sensoryTestM->sensoryMaster->note }}</div>
+                            <div class="col-md-12"><label class="control-label">Note</label> : {{ $sensoryTestM->sensoryMaster->note }}
+                            
+                            </div>
                         </div>
                         @if ($errors->any())
                             <ul class="alert alert-danger">
@@ -57,7 +59,12 @@
                                         <td>{{ $item->odor }}</td>
                                         <td>{{ $item->texture }}</td>
                                         <td>{{ $item->taste }}</td>
-                                        <td><div id="test-{{$item->id}}-result" >{{ $item->note }}</div></td>
+                                        <td><div id="test-{{$item->id}}-result" >{{ $item->note }}</div>
+                                        @if (!empty($item->image_path))
+                                <img src="{{  env('APP_URL').Illuminate\Support\Facades\Storage::url($item->image_path) }}" height="100px">
+                            @endif
+                                        
+                                        </td>
                                         <td><div id="test-{{$item->id}}-result" >{{ $item->result }}</div></td>
                                     </tr>
                                     @endforeach

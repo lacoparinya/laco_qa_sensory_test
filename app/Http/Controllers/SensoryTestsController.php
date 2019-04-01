@@ -143,7 +143,7 @@ class SensoryTestsController extends Controller
             '5' => '5',
         );
 
-        if ($sensorymaster->status == 'testing') {
+       if ($sensorymaster->status == 'testing') {
             return view('sensory-tests.runtest', compact('sensorymaster', 'optionList', 'agent'));
         }else{
             return view('sensory-tests.thankyou', compact('sensoryTestM'));
@@ -196,8 +196,8 @@ class SensoryTestsController extends Controller
 
     public function edittest($id)
     {
+        $agent = new Agent();
         $sensoryTestM = SensoryTestM::findOrFail($id);
-
         $optionList = array(
             '' => 'Select',
             '1' => '1',
@@ -207,11 +207,13 @@ class SensoryTestsController extends Controller
             '5' => '5',
         );
 
+        
+
         if($sensoryTestM->status == 'Lock' || $sensoryTestM->status == 'end'){
             return view('sensory-tests.thankyou', compact('sensoryTestM'));
         }
 
-        return view('sensory-tests.edittest', compact('sensoryTestM', 'optionList'));
+        return view('sensory-tests.edittest', compact('sensoryTestM', 'optionList', 'agent'));
     }
 
     public function edittestAction(Request $request, $id){
@@ -237,6 +239,10 @@ class SensoryTestsController extends Controller
             $sensoryTestD->result = $value['hidden'];
 
             $sensoryTestD->note = $value['note'];
+
+            if(!empty($value ['capture'])){
+                $sensoryTestD->image_path = Storage::putFile('capture/'. $id, $value[ 'capture']);
+            }
 
             $sensoryTestD->avg_result = $value['avg'];
 
