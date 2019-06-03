@@ -73,6 +73,15 @@
                                             <a href="{{ url('/sensory/startTest/' . $item->id ) }}" title="Start"><button class="btn btn-success btn-sm"><i class="glyphicon glyphicon-play" aria-hidden="true"></i> Start</button></a>
                                                  @endif
                                             @endif
+
+                                            @if ( $item->sensoryTestM->count() == 0 || $item->sensoryTestM->count() == 0)
+                                            <form method="POST" action="{{ url('/sensory-masters' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
+                                                {{ method_field('DELETE') }}
+                                                {{ csrf_field() }}
+                                                <button type="submit" class="btn btn-danger btn-sm" title="Delete user" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="glyphicon glyphicon-trash" aria-hidden="true"></i> Delete</button>
+                                            </form>
+                                            @endif
+
                                         </td>
                                     </tr>
                                 @endforeach

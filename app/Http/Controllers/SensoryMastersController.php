@@ -12,6 +12,7 @@ use App\QaSampleSensory;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\DB;
 
 class SensoryMastersController extends Controller
 {
@@ -121,6 +122,9 @@ class SensoryMastersController extends Controller
      */
     public function destroy($id)
     {
+
+        $sensoryDetailData = DB::table('sensory_details')->where('sensory_master_id', $id)->delete();
+
         SensoryMaster::destroy($id);
 
         return redirect('sensory-masters')->with('flash_message', ' deleted!');
