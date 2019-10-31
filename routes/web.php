@@ -48,6 +48,8 @@ Route::get('/sensory/listsurvey/{id}', 'SensoryTestsController@listsurvey');
 
 Route::get('/reports/summaryreport/{id}', 'ReportsController@summaryreport');
 Route::get('/reports/xlssummaryreport/{id}', 'ReportsController@xlsreport');
+Route::get('/reports/rangereport', 'ReportsController@rangereport');
+Route::post('/reports/rangereportAction', 'ReportsController@rangereportAction');
 
 Route::get('storage/capture/{id}/{filename}', function ($id,$filename) {
     $path = storage_path( 'app/capture/' . $id .'/'. $filename);

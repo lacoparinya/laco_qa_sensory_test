@@ -32,6 +32,9 @@
                                     <a href="{{route('sensory-masters.index')}}">Daily Report</a>
                                     </li>
                                     <li>
+                                    <a href="{{url('reports/rangereport')}}">Range Report</a>
+                                    </li>
+                                    <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -54,6 +57,9 @@
                                     <li><hr/></li>
                                     <li>
                                     <a href="{{route('sensory-masters.index')}}">Daily Report</a>
+                                    </li>
+                                    <li>
+                                    <a href="{{url('reports/rangereport')}}">Range Report</a>
                                     </li>
                                     <li>
                                         <a href="{{ route('logout') }}"
