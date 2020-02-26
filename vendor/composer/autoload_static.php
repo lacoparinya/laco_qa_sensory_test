@@ -354,6 +354,8 @@ class ComposerStaticInit26f5cdd8562c61a577ebb5eb9cf5893f
     );
 
     public static $classMap = array (
+        'App\\AnsSuitD' => __DIR__ . '/../..' . '/app/AnsSuitD.php',
+        'App\\AnsSuitM' => __DIR__ . '/../..' . '/app/AnsSuitM.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Group' => __DIR__ . '/../..' . '/app/Group.php',
@@ -378,6 +380,7 @@ class ComposerStaticInit26f5cdd8562c61a577ebb5eb9cf5893f
         'App\\Http\\Middleware\\TrimStrings' => __DIR__ . '/../..' . '/app/Http/Middleware/TrimStrings.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Mail\\QaEmail' => __DIR__ . '/../..' . '/app/Mail/QaEmail.php',
+        'App\\Providers\\AgentServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AgentServiceProvider.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
@@ -390,6 +393,8 @@ class ComposerStaticInit26f5cdd8562c61a577ebb5eb9cf5893f
         'App\\SensoryMaster' => __DIR__ . '/../..' . '/app/SensoryMaster.php',
         'App\\SensoryTestD' => __DIR__ . '/../..' . '/app/SensoryTestD.php',
         'App\\SensoryTestM' => __DIR__ . '/../..' . '/app/SensoryTestM.php',
+        'App\\TestSuitD' => __DIR__ . '/../..' . '/app/TestSuitD.php',
+        'App\\TestSuitM' => __DIR__ . '/../..' . '/app/TestSuitM.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
         'Appzcoder\\CrudGenerator\\Commands\\CrudApiCommand' => __DIR__ . '/..' . '/appzcoder/crud-generator/src/Commands/CrudApiCommand.php',
         'Appzcoder\\CrudGenerator\\Commands\\CrudApiControllerCommand' => __DIR__ . '/..' . '/appzcoder/crud-generator/src/Commands/CrudApiControllerCommand.php',
@@ -454,6 +459,8 @@ class ComposerStaticInit26f5cdd8562c61a577ebb5eb9cf5893f
         'Collective\\Html\\HtmlBuilder' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlBuilder.php',
         'Collective\\Html\\HtmlFacade' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlFacade.php',
         'Collective\\Html\\HtmlServiceProvider' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlServiceProvider.php',
+        'CreateAnsSuitDsTable' => __DIR__ . '/../..' . '/database/migrations/2020_02_25_023012_create_ans_suit_ds_table.php',
+        'CreateAnsSuitMsTable' => __DIR__ . '/../..' . '/database/migrations/2020_02_25_022948_create_ans_suit_ms_table.php',
         'CreateGroupsTable' => __DIR__ . '/../..' . '/database/migrations/2019_02_07_014830_create_groups_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
         'CreateQaSampleDatasTable' => __DIR__ . '/../..' . '/database/migrations/2019_02_07_004517_create_qa_sample_datas_table.php',
@@ -462,6 +469,8 @@ class ComposerStaticInit26f5cdd8562c61a577ebb5eb9cf5893f
         'CreateSensoryMastersTable' => __DIR__ . '/../..' . '/database/migrations/2019_02_07_011946_create_sensory_masters_table.php',
         'CreateSensoryTestDsTable' => __DIR__ . '/../..' . '/database/migrations/2019_02_07_012446_create_sensory_test_ds_table.php',
         'CreateSensoryTestMsTable' => __DIR__ . '/../..' . '/database/migrations/2019_02_07_012436_create_sensory_test_ms_table.php',
+        'CreateTestSuitDsTable' => __DIR__ . '/../..' . '/database/migrations/2020_02_25_022926_create_test_suit_ds_table.php',
+        'CreateTestSuitMsTable' => __DIR__ . '/../..' . '/database/migrations/2020_02_25_022908_create_test_suit_ms_table.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_users_table.php',
         'Cron\\AbstractField' => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron/AbstractField.php',
         'Cron\\CronExpression' => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron/CronExpression.php',

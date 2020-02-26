@@ -25,6 +25,9 @@
                                     <a href="{{route('sensory-masters.index')}}">Sensory Test</a>
                                     </li>
                                     <li>
+                                    <a href="{{route('test-suits.index')}}">Sensory Test 2</a>
+                                    </li>
+                                    <li>
                                     <a href="{{route('users.index')}}">User</a>
                                     </li>
                                     <li><hr/></li>
@@ -53,6 +56,9 @@
                                     </li>
                                     <li>
                                     <a href="{{route('sensory-masters.index')}}">Sensory Test</a>
+                                    </li>
+                                    <li>
+                                    <a href="{{route('test-suits.index')}}">Sensory Test 2</a>
                                     </li>
                                     <li><hr/></li>
                                     <li>

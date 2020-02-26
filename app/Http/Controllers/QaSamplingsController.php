@@ -135,9 +135,9 @@ class QaSamplingsController extends Controller
 
         $path = $request->file('uploadfile')->store('xls');
 
-        $storagePath = Storage::disk('local')->getDriver()->getAdapter()->getPathPrefix();
+      	$storagePath = Storage::disk('local')->getDriver()->getAdapter()->getPathPrefix();
 
-        Excel::selectSheets( 'Sensory Test')->load($storagePath . $path, function ($reader) {
+        Excel::selectSheets('Sheet1')->load($storagePath . $path, function ($reader) {
 
             $mapping = array(
                 'Run Number' => 'run_number',
@@ -155,7 +155,7 @@ class QaSamplingsController extends Controller
             );
 
             $reader->formatDates(false)->each(function ($tmpdata) use ($mapping) {
-                
+
                 $saveTmp = array();
                 foreach ($tmpdata as $key => $value) {
 
@@ -180,17 +180,22 @@ class QaSamplingsController extends Controller
                     }
                 }
 
+                
+
                 $chkData = QaSampleSensory::where('run_number', $saveTmp['run_number'])->first();
                 if (!empty($chkData)) {
+                    echo 'update '. $saveTmp['run_number']."<br/>";
                     $chkData->update($saveTmp);
                 } else {
+
+                    echo 'create ' . $saveTmp['run_number'] . "<br/>";
                     QaSampleSensory::create($saveTmp);
                 }
             });
 
         }, 'windows-874');
 
-        return redirect('qa-samplings');
+        //return redirect('qa-samplings');
     }
 
 }

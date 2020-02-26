@@ -21,6 +21,7 @@ Route::resource('sensory-tests', 'SensoryTestsController');
 Route::resource('groups', 'GroupsController');
 Route::resource('users', 'UsersController');
 Route::resource('qa-samplings', 'QaSamplingsController');
+Route::resource('test-suits', 'TestSuitsController');
 
 Route::get('/qasample/upload', 'QaSamplingsController@upload');
 Route::post('/qasample/uploadAction', 'QaSamplingsController@uploadAction');
@@ -50,6 +51,17 @@ Route::get('/reports/summaryreport/{id}', 'ReportsController@summaryreport');
 Route::get('/reports/xlssummaryreport/{id}', 'ReportsController@xlsreport');
 Route::get('/reports/rangereport', 'ReportsController@rangereport');
 Route::post('/reports/rangereportAction', 'ReportsController@rangereportAction');
+
+Route::get('/test-suits/changeStatus/{id}/{status}', 'TestSuitsController@changeStatus');
+Route::get('/test-suits/runtest/{test_suit_m_id}', 'TestSuitsController@runtest');
+Route::post('/test-suits/runtestAction/{test_suit_m_id}', 'TestSuitsController@runtestAction');
+Route::get('/test-suits/confirmtest/{ans_suit_m_id}', 'TestSuitsController@confirmtest');
+Route::get('/test-suits/confirmtestAction/{ans_suit_m_id}', 'TestSuitsController@confirmtestAction');
+Route::get('/test-suits/edittest/{ans_suit_m_id}', 'TestSuitsController@edittest');
+Route::post('/test-suits/edittestAction/{ans_suit_m_id}', 'TestSuitsController@edittestAction');
+Route::get('/test-suits/showResult/{test_suit_m_id}', 'TestSuitsController@showResult');
+Route::get('/test-suits/exportExcel/{test_suit_m_id}', 'TestSuitsController@exportExcel');
+Route::get('/test-suits/printform/{id}', 'TestSuitsController@printform');
 
 Route::get('storage/capture/{id}/{filename}', function ($id,$filename) {
     $path = storage_path( 'app/capture/' . $id .'/'. $filename);

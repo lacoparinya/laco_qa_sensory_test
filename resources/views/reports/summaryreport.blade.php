@@ -29,52 +29,26 @@
 @if (!$summaryData->isEmpty())
 <script>
 google.charts.load('current', {'packages':['corechart']});
-google.charts.setOnLoadCallback(drawVisualization);
+      google.charts.setOnLoadCallback(drawChart);
 
-     function drawVisualization() {
-        // Some raw data (not necessarily accurate)
+      function drawChart() {
+
         var data = google.visualization.arrayToDataTable([
-          ['Product', 'Color', 'Odor', 'Texture', 'Taste','Limit Top','Limit Below'],
-          @foreach($summaryData as $item)
-            ['{{ $item->code }} - {{ $item->product_name }}',{{ $item->avg_color }},{{ $item->avg_odor }},{{ $item->avg_texture }},{{ $item->avg_taste }},5,1],
-          @endforeach
+          ['Task', 'Hours per Day'],
+          ['Work',     11],
+          ['Eat',      2],
+          ['Commute',  2],
+          ['Watch TV', 2],
+          ['Sleep',    7]
         ]);
 
         var options = {
-                chartArea: {
-                    top: 45,
-                    height: '50%' 
-                },
-                title : 'วันที่ทดสอบ: {{ $masterData->test_date }} ,การทดสอบชื่อ: {{ $masterData->sensory_name }}',
-                legend: { 
-                    position: 'top', 
-                    maxLines: 3 
-                },
-                vAxis: {
-                    title: 'คะแนนการทดสอบเฉลี่ย (1-5)',
-                    ticks: [0,1,2,3,4,5,6] 
-                },
-                seriesType: 'bars',
-                series: {
-                    4: {type: 'line'},
-                    5: {type: 'line'}
-                },
-
-
+          title: 'My Daily Activities'
         };
 
-        var view = new google.visualization.DataView(data);
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
 
-        var chart_div = document.getElementById('chart1');
-      var chart = new google.visualization.ColumnChart(chart_div);
-        
-        google.visualization.events.addListener(chart, 'ready', function () {
-        chart_div.innerHTML = '<img src="' + chart.getImageURI() + '">';
-        //console.log(chart_div.innerHTML);
-      });
-
-
-        chart.draw(view, options);
+        chart.draw(data, options);
       }
 
   

@@ -6,6 +6,8 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\AnsSuitD' => $baseDir . '/app/AnsSuitD.php',
+    'App\\AnsSuitM' => $baseDir . '/app/AnsSuitM.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Group' => $baseDir . '/app/Group.php',
@@ -30,6 +32,7 @@ return array(
     'App\\Http\\Middleware\\TrimStrings' => $baseDir . '/app/Http/Middleware/TrimStrings.php',
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
     'App\\Mail\\QaEmail' => $baseDir . '/app/Mail/QaEmail.php',
+    'App\\Providers\\AgentServiceProvider' => $baseDir . '/app/Providers/AgentServiceProvider.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'App\\Providers\\AuthServiceProvider' => $baseDir . '/app/Providers/AuthServiceProvider.php',
     'App\\Providers\\BroadcastServiceProvider' => $baseDir . '/app/Providers/BroadcastServiceProvider.php',
@@ -42,6 +45,8 @@ return array(
     'App\\SensoryMaster' => $baseDir . '/app/SensoryMaster.php',
     'App\\SensoryTestD' => $baseDir . '/app/SensoryTestD.php',
     'App\\SensoryTestM' => $baseDir . '/app/SensoryTestM.php',
+    'App\\TestSuitD' => $baseDir . '/app/TestSuitD.php',
+    'App\\TestSuitM' => $baseDir . '/app/TestSuitM.php',
     'App\\User' => $baseDir . '/app/User.php',
     'Appzcoder\\CrudGenerator\\Commands\\CrudApiCommand' => $vendorDir . '/appzcoder/crud-generator/src/Commands/CrudApiCommand.php',
     'Appzcoder\\CrudGenerator\\Commands\\CrudApiControllerCommand' => $vendorDir . '/appzcoder/crud-generator/src/Commands/CrudApiControllerCommand.php',
@@ -106,6 +111,8 @@ return array(
     'Collective\\Html\\HtmlBuilder' => $vendorDir . '/laravelcollective/html/src/HtmlBuilder.php',
     'Collective\\Html\\HtmlFacade' => $vendorDir . '/laravelcollective/html/src/HtmlFacade.php',
     'Collective\\Html\\HtmlServiceProvider' => $vendorDir . '/laravelcollective/html/src/HtmlServiceProvider.php',
+    'CreateAnsSuitDsTable' => $baseDir . '/database/migrations/2020_02_25_023012_create_ans_suit_ds_table.php',
+    'CreateAnsSuitMsTable' => $baseDir . '/database/migrations/2020_02_25_022948_create_ans_suit_ms_table.php',
     'CreateGroupsTable' => $baseDir . '/database/migrations/2019_02_07_014830_create_groups_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
     'CreateQaSampleDatasTable' => $baseDir . '/database/migrations/2019_02_07_004517_create_qa_sample_datas_table.php',
@@ -114,6 +121,8 @@ return array(
     'CreateSensoryMastersTable' => $baseDir . '/database/migrations/2019_02_07_011946_create_sensory_masters_table.php',
     'CreateSensoryTestDsTable' => $baseDir . '/database/migrations/2019_02_07_012446_create_sensory_test_ds_table.php',
     'CreateSensoryTestMsTable' => $baseDir . '/database/migrations/2019_02_07_012436_create_sensory_test_ms_table.php',
+    'CreateTestSuitDsTable' => $baseDir . '/database/migrations/2020_02_25_022926_create_test_suit_ds_table.php',
+    'CreateTestSuitMsTable' => $baseDir . '/database/migrations/2020_02_25_022908_create_test_suit_ms_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
     'Cron\\AbstractField' => $vendorDir . '/mtdowling/cron-expression/src/Cron/AbstractField.php',
     'Cron\\CronExpression' => $vendorDir . '/mtdowling/cron-expression/src/Cron/CronExpression.php',

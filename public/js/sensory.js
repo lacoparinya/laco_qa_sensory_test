@@ -60,4 +60,22 @@ $(document).ready(function () {
         }
     });
 
+    $('.chkdup').change(function(){
+        var selectvalue = $(this).val();
+        var selectname = $(this).attr('name');
+        var result = true;
+        $('.chkdup').each(function () {
+            var sThisVal = (this.checked ? $(this).val() : "");
+
+            if (sThisVal == selectvalue && $(this).attr('name') != selectname){
+                result = false;
+            }
+        });
+
+        if(!result){
+            $(this).prop('checked', false);
+        }
+        
+    });
+
 });
