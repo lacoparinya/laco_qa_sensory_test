@@ -18,7 +18,16 @@ class TestSuitsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth',
+        ['except' => [
+                'runtest',
+                'runtestAction',
+                'confirmtest',
+                'confirmtestAction',
+                'edittest',
+                'edittestAction',
+                'printform'
+        ]]);
     }
     /**
      * Display a listing of the resource.

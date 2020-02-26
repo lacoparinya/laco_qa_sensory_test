@@ -28,7 +28,7 @@ class QaSamplingsController extends Controller
         $perPage = 25;
 
         if (!empty($keyword)) {
-            $qasamplings = QaSampleSensory::latest()->paginate($perPage);
+            $qasamplings = QaSampleSensory::where('run_number','like','%'.$keyword.'%')->latest()->paginate($perPage);
         } else {
             $qasamplings = QaSampleSensory::latest()->paginate($perPage);
         }
@@ -135,10 +135,9 @@ class QaSamplingsController extends Controller
 
         $path = $request->file('uploadfile')->store('xls');
 
-      	$storagePath = Storage::disk('local')->getDriver()->getAdapter()->getPathPrefix();
+        $storagePath = Storage::disk('local')->getDriver()->getAdapter()->getPathPrefix();
 
-        Excel::selectSheets('Sheet1')->load($storagePath . $path, function ($reader) {
-
+        Excel::selectSheets('Sensory Test')->load($storagePath . $path, function ($reader) {
             $mapping = array(
                 'Run Number' => 'run_number',
                 'Sampling Date' => 'sampling_date',
@@ -155,7 +154,7 @@ class QaSamplingsController extends Controller
             );
 
             $reader->formatDates(false)->each(function ($tmpdata) use ($mapping) {
-
+                
                 $saveTmp = array();
                 foreach ($tmpdata as $key => $value) {
 
@@ -180,8 +179,6 @@ class QaSamplingsController extends Controller
                     }
                 }
 
-                
-
                 $chkData = QaSampleSensory::where('run_number', $saveTmp['run_number'])->first();
                 if (!empty($chkData)) {
                     echo 'update '. $saveTmp['run_number']."<br/>";
@@ -195,7 +192,7 @@ class QaSamplingsController extends Controller
 
         }, 'windows-874');
 
-        //return redirect('qa-samplings');
+        return redirect('qa-samplings');
     }
 
 }
