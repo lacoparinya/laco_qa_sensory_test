@@ -39,8 +39,12 @@
 
                         <div class="col-md-12 form-group">
     <a href="{{ url('/test-suits/edittest/' . $anssuit->id) }}" title="Start"><button class="btn btn-success">Edit</button></a>
-    <a href="{{ url('/test-suits/confirmtestAction/' . $anssuit->id) }}" title="Start"><button class="btn btn-primary">Confirm</button></a>
-                                               
+    @if ($checkdup)
+        <a href="{{ url('/test-suits/confirmtestAction/' . $anssuit->id) }}" title="Start"><button class="btn btn-primary">Confirm</button></a>
+ 
+    @endif
+    
+                                                  
 </div>
                         </form>
                     </div>

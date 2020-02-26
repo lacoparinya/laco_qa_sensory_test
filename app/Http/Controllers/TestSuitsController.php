@@ -228,14 +228,24 @@ class TestSuitsController extends Controller
     public function confirmtest($ans_suit_m_id){
         $anssuit = AnsSuitM::findOrFail($ans_suit_m_id);
 
-        return view('test-suits.confirmtest', compact('anssuit'));
+        $checkdup = true;
+        $arraychk = array();
+        foreach ($anssuit->anssuitd as $item) {
+            if(isset($arraychk[$item->value])){
+                $checkdup = false;
+            }
+
+            $arraychk[$item->value] = $item->id;
+        }
+
+        return view('test-suits.confirmtest', compact('anssuit', 'checkdup'));
     }
 
     public function confirmtestAction($ans_suit_m_id){
 
         $anssuit = AnsSuitM::findOrFail($ans_suit_m_id);
 
-        $rate = 33.33;
+        $rate = 2/3;
 
         $resultRate = 0;
         $resultTxt = 'Fail';
